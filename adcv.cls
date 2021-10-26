@@ -81,6 +81,18 @@
   \printtrue
 }
 
+\newif\ifpublist
+\publistfalse
+\DeclareOption{forcepublist}{
+  \publisttrue
+}
+
+\newif\ifcolorful
+\colorfulfalse
+\DeclareOption{colorful}{
+  \colorfultrue
+}
+
 % This command includes the specified file either from the current document path
 % or from the class file path, raising an error if not found in any of those.
 \newcommand\InputIfFileExistsMultiple[2]{
@@ -200,11 +212,19 @@
 \definecolor{coralpink}{HTML}{FF706C}
 
 \ifprint
-  \colorlet{regulartext}{black}
-  \colorlet{headerfill}{white}
-  \colorlet{headertext}{black}
-  \colorlet{lighttext}{gray}
-  \colorlet{linktext}{lightgray}
+  \ifcolorful
+    \colorlet{regulartext}{black}
+    \colorlet{headerfill}{paynegray}
+    \colorlet{headertext}{white}
+    \colorlet{lighttext}{black}
+    \colorlet{linktext}{coralpink}
+  \else
+    \colorlet{regulartext}{black}
+    \colorlet{headerfill}{white}
+    \colorlet{headertext}{black}
+    \colorlet{lighttext}{black}
+    \colorlet{linktext}{gray}
+  \fi
 \else
   \colorlet{regulartext}{gray}
   \colorlet{headerfill}{paynegray}
@@ -242,7 +262,7 @@
 
 \RequirePackage{fontspec}
 
-\newcommand\fontspath{ \thispath/fonts/ }
+\newcommand\fontspath{\thispath/fonts/}
 
 \setmainfont[
   Path = \fontspath,
@@ -373,6 +393,7 @@
 \newenvironment*{adcvtabletwo}{\begin{longtable}[l]{@{}>{\raggedright}p{\adcv@leftcentercol}@{\hspace{\adcv@colsep}} @{}>{\raggedleft}p{\adcv@rightcol}@{}}}{\end{longtable}}
 
 \newcommand*{\adcvrowtwo}[2]{#1 & #2\tabularnewline}
+\newcommand*{\adcvrowmultifake}[1]{\multicolumn{2}{@{}p{\textwidth}}{ #1}\tabularnewline}
 \newcommand*{\adcvrowmulti}[1]{\multicolumn{2}{@{}p{\textwidth}}{\lighttext #1}\tabularnewline}
 
 \newenvironment*{adcvtablethree}{\begin{longtable}[l]{@{}>{\raggedright}p{\adcv@leftcol}@{\hspace{\adcv@colsep}} @{}>{\raggedright}p{\adcv@centercol}@{} @{\hspace{\adcv@colsep}}>{\raggedleft}p{\adcv@rightcol}@{}}}{\end{longtable}}
@@ -427,7 +448,7 @@
 
 % Publications
 
-\RequirePackage[backend=biber,block=par,defernumbers=false,maxnames=99,sorting=none,style=numeric]{biblatex}
+\RequirePackage[backend=biber,block=nbpar,defernumbers=false,maxnames=99,sorting=none,style=numeric]{biblatex}
 \RequirePackage{csquotes}
 \urlstyle{same}
 
@@ -435,6 +456,7 @@
 \DeclareFieldFormat[inproceedings]{title}{#1}
 \DeclareFieldFormat[misc]{title}{#1}
 \DeclareFieldFormat[report]{title}{#1}
+\DeclareFieldFormat[incollection]{title}{#1}
 
 \renewcommand*{\newunitpunct}{\addcomma\space}
 
