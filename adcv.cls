@@ -208,16 +208,17 @@
 \definecolor{gray}{HTML}{555555}
 \definecolor{paynegray}{HTML}{353E49}
 \definecolor{black}{HTML}{000000}
-% \definecolor{paynegray}{HTML}{272F38}
-\definecolor{coralpink}{HTML}{FF706C}
+\definecolor{cutegreen}{HTML}{009485}
+\definecolor{darkgreen}{HTML}{017d70}
+\definecolor{cuteblue}{HTML}{1E74FF}
 
 \ifprint
   \ifcolorful
     \colorlet{regulartext}{black}
-    \colorlet{headerfill}{paynegray}
+    \colorlet{headerfill}{cutegreen}
     \colorlet{headertext}{white}
     \colorlet{lighttext}{black}
-    \colorlet{linktext}{coralpink}
+    \colorlet{linktext}{darkgreen}
   \else
     \colorlet{regulartext}{black}
     \colorlet{headerfill}{white}
@@ -227,10 +228,10 @@
   \fi
 \else
   \colorlet{regulartext}{gray}
-  \colorlet{headerfill}{paynegray}
+  \colorlet{headerfill}{cutegreen}
   \colorlet{headertext}{white}
   \colorlet{lighttext}{lightgray}
-  \colorlet{linktext}{coralpink}
+  \colorlet{linktext}{darkgreen}
 \fi
 
 % Hyperref
