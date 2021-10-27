@@ -230,9 +230,13 @@
     \colorlet{headerfill}{cutegreen}
     \colorlet{headertext}{white}
     \colorlet{headersubtext}{white}
+  \else
+    \colorlet{headersubtext}{black}
+    \ifcolorlinks
+      \colorlet{headertext}{darkgreen}
+    \fi
   \fi
   \ifcolorlinks
-    \colorlet{headertext}{darkgreen}
     \colorlet{linktext}{darkgreen}
   \fi
 \fi
@@ -335,7 +339,7 @@
     \node [text=headertext, anchor=center] (name) at (box) {%
       {\Huge\thinheader\adcv@firstname~\regularheader\adcv@lastname\thinheader,~\adcv@degree}%
     };%
-    \node [text=headertext, anchor=north] at (name.south) {%
+    \node [text=headersubtext, anchor=north] at (name.south) {%
       \Large\thinsubheader\adcv@title%
     };%
   \end{tikzpicture}%
