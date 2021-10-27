@@ -87,10 +87,16 @@
   \publisttrue
 }
 
-\newif\ifcolorful
-\colorfulfalse
-\DeclareOption{colorful}{
-  \colorfultrue
+\newif\ifcolorlinks
+\colorlinksfalse
+\DeclareOption{colorlinks}{
+  \colorlinkstrue
+}
+
+\newif\ifcolorbar
+\colorbarfalse
+\DeclareOption{colorbar}{
+  \colorbartrue
 }
 
 % This command includes the specified file either from the current document path
@@ -212,26 +218,20 @@
 \definecolor{darkgreen}{HTML}{017d70}
 \definecolor{cuteblue}{HTML}{1E74FF}
 
+\colorlet{regulartext}{black}
+\colorlet{headerfill}{white}
+\colorlet{headertext}{black}
+\colorlet{lighttext}{black}
+\colorlet{linktext}{gray}
+
 \ifprint
-  \ifcolorful
-    \colorlet{regulartext}{black}
+  \ifcolorbar
     \colorlet{headerfill}{cutegreen}
     \colorlet{headertext}{white}
-    \colorlet{lighttext}{black}
-    \colorlet{linktext}{darkgreen}
-  \else
-    \colorlet{regulartext}{black}
-    \colorlet{headerfill}{white}
-    \colorlet{headertext}{black}
-    \colorlet{lighttext}{black}
-    \colorlet{linktext}{gray}
   \fi
-\else
-  \colorlet{regulartext}{gray}
-  \colorlet{headerfill}{cutegreen}
-  \colorlet{headertext}{white}
-  \colorlet{lighttext}{lightgray}
-  \colorlet{linktext}{darkgreen}
+  \ifcolorlinks
+    \colorlet{linktext}{darkgreen}
+  \fi
 \fi
 
 % Hyperref
