@@ -221,6 +221,7 @@
 \colorlet{regulartext}{black}
 \colorlet{headerfill}{white}
 \colorlet{headertext}{black}
+\colorlet{headersubtext}{black}
 \colorlet{lighttext}{black}
 \colorlet{linktext}{gray}
 
@@ -228,8 +229,10 @@
   \ifcolorbar
     \colorlet{headerfill}{cutegreen}
     \colorlet{headertext}{white}
+    \colorlet{headersubtext}{white}
   \fi
   \ifcolorlinks
+    \colorlet{headertext}{darkgreen}
     \colorlet{linktext}{darkgreen}
   \fi
 \fi
@@ -278,6 +281,7 @@
 \newfontfamily\thin[Path = \fontspath, Color=regulartext]{Roboto-Thin.ttf}
 \newfontfamily\regularheader[Path = \fontspath, Color=headertext]{Roboto-Regular.ttf}
 \newfontfamily\thinheader[Path = \fontspath, Color=headertext]{Roboto-Thin.ttf}
+\newfontfamily\thinsubheader[Path = \fontspath, Color=headersubtext]{Roboto-Thin.ttf}
 
 \newcommand*{\lighttext}{\addfontfeature{Color=lighttext}}
 \newcommand*{\linktext}{\addfontfeature{Color=linktext}}
@@ -332,7 +336,7 @@
       {\Huge\thinheader\adcv@firstname~\regularheader\adcv@lastname\thinheader,~\adcv@degree}%
     };%
     \node [text=headertext, anchor=north] at (name.south) {%
-      \Large\thinheader\adcv@title%
+      \Large\thinsubheader\adcv@title%
     };%
   \end{tikzpicture}%
 
