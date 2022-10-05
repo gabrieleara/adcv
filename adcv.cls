@@ -294,7 +294,7 @@
 \def\HyColor@@@@UseColor#1\@nil{\addfontfeatures{Color=linktext}}
 
 \renewcommand{\section}[1]{\vspace{.5\baselineskip}{\Large\bfseries\@sectioncolor #1}}
-\renewcommand{\subsection}[2]{\large\bfseries #2}
+\renewcommand{\subsection}[2]{{\large\bfseries #2}}
 
 % Header
 
@@ -572,8 +572,8 @@
 \RequirePackage{enumitem}
 
 \newenvironment*{adcvpresentations}{%
-  \setlist[enumerate]{labelsep=1em}%
-  \renewcommand{\theenumi}{[\arabic{enumi}]}%
+  \setlist[enumerate]{labelsep=0em,labelindent=0pt}%
+  \renewcommand{\theenumi}{}%
   \renewcommand{\labelenumi}{\theenumi}%
   \begin{enumerate}%
 }{%
